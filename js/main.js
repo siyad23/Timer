@@ -30,12 +30,7 @@ class Timer {
     });
 
     this.el.reset.addEventListener("click", () => {
-      const inputMinutes = prompt("Enter number of minutes:");
-      this.intervalTime = prompt("Enter interval time:");
-      this.stop();
-      this.remainingSeconds = inputMinutes * 60;
-      this.remainingIntervalTime = this.intervalTime;
-      this.updateInterfaceTime();
+      this.input();
     });
 
     this.el.body.addEventListener("keypress", (e) => {
@@ -45,8 +40,23 @@ class Timer {
         this.remainingIntervalTime = this.intervalTime;
         this.updateInterfaceTime();
         this.el.bell.play();
+      } else if (e.key === "s") {
+        this.start();
+        this.el.bell.play();
+      } else if (e.key === "p") {
+        this.stop();
+      } else if (e.key === "i") {
+        this.input();
       }
     });
+  }
+  input() {
+    const inputMinutes = prompt("Enter number of minutes:");
+    this.intervalTime = prompt("Enter interval time:");
+    this.stop();
+    this.remainingSeconds = inputMinutes * 60;
+    this.remainingIntervalTime = this.intervalTime;
+    this.updateInterfaceTime();
   }
   updateInterfaceTime() {
     const minutes = Math.floor(this.remainingSeconds / 60);
