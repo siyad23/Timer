@@ -10,6 +10,7 @@ class Timer {
       intervalTime: root.querySelector(".intervalTime"),
       ellapsedMin: root.querySelector(".ellapsedMin"),
       ellapsedSec: root.querySelector(".ellapsedSec"),
+      bell: document.querySelector(".bell"),
       body: document.querySelector("body"),
     };
 
@@ -22,6 +23,7 @@ class Timer {
     this.el.control.addEventListener("click", () => {
       if (this.interval === null) {
         this.start();
+        this.el.bell.play();
       } else {
         this.stop();
       }
@@ -42,6 +44,7 @@ class Timer {
           this.remainingSeconds - this.remainingIntervalTime;
         this.remainingIntervalTime = this.intervalTime;
         this.updateInterfaceTime();
+        this.el.bell.play();
       }
     });
   }
@@ -87,6 +90,7 @@ class Timer {
         this.stop();
       }
       if (this.remainingIntervalTime === 0) {
+        this.el.bell.play();
         this.remainingIntervalTime = this.intervalTime;
       }
     }, 1000);
@@ -104,17 +108,30 @@ class Timer {
 
   static getHTML() {
     return `
-			<span class="timer__part timer__part--minutes">00</span>
-			<span class="timer__part">:</span>
-			<span class="timer__part timer__part--seconds">00</span>
-			<button type="button" class="timer__btn timer__btn--control timer__btn--start">
-				<span class="material-icons">play_arrow</span>
-			</button>
-			<button type="button" class="timer__btn timer__btn--reset">
-				<span class="material-icons">timer</span>
-			</button>
-            <div class="intervalTime">30s</div>
-            <div class="ellapsedTime"><span class="ellapsedMin"></span>:<span class="ellapsedSec"></span></div>
+        <div class="remainingTime">
+          <span class="timer__part timer__part--minutes">00</span>
+          <span class="timer__part">:</span>
+          <span class="timer__part timer__part--seconds">00</span>
+        </div>
+        <div class="intervalTimeContainer">
+          <span class="intervalTime">0</span>
+        </div>
+        <div class="ellapsedTime">
+          <span class="ellapsedMin">00</span>:<span class="ellapsedSec"
+            >00</span
+          >
+        </div>
+        <div class="controls">
+          <button
+            type="button"
+            class="timer__btn timer__btn--control timer__btn--start"
+          >
+            <span class="material-icons">play_arrow</span>
+          </button>
+          <button type="button" class="timer__btn timer__btn--reset">
+            <span class="material-icons">timer</span>
+          </button>
+        </div>
 		`;
   }
 }

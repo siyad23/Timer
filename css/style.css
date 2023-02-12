@@ -1,6 +1,24 @@
-body {
+:root {
+  --primary-color: #243763;
+  --secondary-color: #ff6e31;
+  --tertiary-color: #ffebb7;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* body {
   background-color: #dddddd;
   margin: 24px;
+} */
+
+/* .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .timer {
@@ -16,6 +34,55 @@ body {
   font-weight: bold;
 }
 
+
+
+
+
+.intervalTimeContainer {
+  font-size: 50px;
+} */
+body {
+  background-color: var(--primary-color);
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.timer {
+  font-family: sans-serif;
+  display: inline-block;
+  padding: 25px 70px;
+  border-radius: 30px;
+  background: var(--tertiary-color);
+  color: var(--secondary-color);
+  text-align: center;
+}
+
+.timer__part {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.intervalTimeContainer {
+  margin: 20px;
+}
+
+.intervalTime {
+  font-size: 10vh;
+  font-weight: bold;
+}
+
+.ellapsedTime {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.controls {
+  margin-top: 20px;
+}
 .timer__btn {
   width: 50px;
   height: 50px;
@@ -23,7 +90,7 @@ body {
   border-radius: 50%;
   color: white;
   border: none;
-  background-color: #8208e6;
+  background-color: var(--secondary-color);
   cursor: pointer;
 }
 
