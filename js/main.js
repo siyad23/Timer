@@ -144,6 +144,9 @@ class Timer {
           <button type="button" class="timer__btn timer__btn--reset">
             <span class="material-icons">timer</span>
           </button>
+          <button type="button" class="timer__btn timer__btn--skip">
+            <span class="material-icons" id="skip">skip_next</span>
+          </button>
         </div>
 		`;
   }

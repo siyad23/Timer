@@ -101,3 +101,15 @@ body {
 .timer__btn--stop {
   background-color: #ff0256;
 }
+
+.timer__btn--skip {
+  display: block;
+  margin: 20px 20px 0 auto;
+  background-color: #ff6e31;
+  height: 80px;
+  width: 80px;
+}
+
+.material-icons#skip {
+  font-size: 50px !important;
+}
