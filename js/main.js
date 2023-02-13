@@ -7,6 +7,7 @@ class Timer {
       seconds: root.querySelector(".timer__part--seconds"),
       control: root.querySelector(".timer__btn--control"),
       reset: root.querySelector(".timer__btn--reset"),
+      skip: root.querySelector(".timer__btn--skip"),
       intervalTime: root.querySelector(".intervalTime"),
       ellapsedMin: root.querySelector(".ellapsedMin"),
       ellapsedSec: root.querySelector(".ellapsedSec"),
@@ -34,13 +35,13 @@ class Timer {
       this.input();
     });
 
+    this.el.skip.addEventListener("click", () => {
+      this.skip();
+    });
+
     this.el.body.addEventListener("keypress", (e) => {
       if (e.key === "f") {
-        this.remainingSeconds =
-          this.remainingSeconds - this.remainingIntervalTime;
-        this.remainingIntervalTime = this.intervalTime;
-        this.updateInterfaceTime();
-        this.el.bell.play();
+        this.skip();
       } else if (e.key === "s") {
         this.start();
         this.el.bell.play();
@@ -59,6 +60,13 @@ class Timer {
     this.remainingIntervalTime = this.intervalTime;
     this.ellapsedTime = 0;
     this.updateInterfaceTime();
+  }
+
+  skip() {
+    this.remainingSeconds = this.remainingSeconds - this.remainingIntervalTime;
+    this.remainingIntervalTime = this.intervalTime;
+    this.updateInterfaceTime();
+    this.el.bell.play();
   }
   updateInterfaceTime() {
     const minutes = Math.floor(this.remainingSeconds / 60);
