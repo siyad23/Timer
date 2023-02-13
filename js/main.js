@@ -11,6 +11,7 @@ class Timer {
       ellapsedMin: root.querySelector(".ellapsedMin"),
       ellapsedSec: root.querySelector(".ellapsedSec"),
       bell: document.querySelector(".bell"),
+      finalBell: document.querySelector(".finalBell"),
       body: document.querySelector("body"),
     };
 
@@ -56,6 +57,7 @@ class Timer {
     this.stop();
     this.remainingSeconds = inputMinutes * 60;
     this.remainingIntervalTime = this.intervalTime;
+    this.ellapsedTime = 0;
     this.updateInterfaceTime();
   }
   updateInterfaceTime() {
@@ -98,6 +100,7 @@ class Timer {
 
       if (this.remainingSeconds === 0) {
         this.stop();
+        this.el.finalBell.play();
       }
       if (this.remainingIntervalTime === 0) {
         this.el.bell.play();
