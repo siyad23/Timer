@@ -21,14 +21,10 @@ class Timer {
     this.remainingIntervalTime = 0;
     this.intervalTime = 0;
     this.ellapsedTime = 0;
+    this.running = false;
 
     this.el.control.addEventListener("click", () => {
-      if (this.interval === null) {
-        this.start();
-        this.el.bell.play();
-      } else {
-        this.stop();
-      }
+      this.startStop();
     });
 
     this.el.reset.addEventListener("click", () => {
@@ -43,15 +39,22 @@ class Timer {
       if (e.key === "f") {
         this.skip();
       } else if (e.key === "s") {
-        this.start();
-        this.el.bell.play();
-      } else if (e.key === "p") {
-        this.stop();
+        this.startStop();
       } else if (e.key === "i") {
         this.input();
       }
     });
   }
+
+  startStop() {
+    if (this.interval === null) {
+      this.start();
+      this.el.bell.play();
+    } else {
+      this.stop();
+    }
+  }
+
   input() {
     const inputMinutes = prompt("Enter number of minutes:");
     this.intervalTime = prompt("Enter interval time:");
